@@ -5,10 +5,13 @@
 
 ## Python3安装
 1. 将python3.6文件夹上传到/usr/local目录下
-2. 创建软连接，执行命令```
+2. 创建软连接，执行命令
+
+```
 ln -s /usr/local/python3.6/bin/python3 /usr/bin/python3
 ln -s /usr/local/python3.6/bin/uwsgi /usr/bin/uwsgi
 ```
+
 
 ## web2py安装
 1. 将web2py文件夹上传至nginx的html目录下
