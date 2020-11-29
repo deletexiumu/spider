@@ -21,7 +21,9 @@ ln -s /usr/local/python3.6/bin/uwsgi /usr/bin/uwsgi
 5. 添加oracle动态库连接，添加文件`/etc/ld.so.conf.d/oracle.conf`，添加内容:`/usr/lib/oracle/18.3/client64/lib`
 6. 添加pg动态库连接，添加文件`/etc/ld.so.conf.d/pgsql.conf`，添加内容:`/usr/local/pgsql-10/lib`
 7. 使动态库连接生效，执行命令:`ldconfig`
-8. 添加uwsgi配置文件，在/data/realinsight/nginx/tengine/conf目录下创建文件web2py.ini，添加内容```
+8. 添加uwsgi配置文件，在/data/realinsight/nginx/tengine/conf目录下创建文件web2py.ini，添加内容
+
+```
 [uwsgi]
 socket = 127.0.0.1:9090
 pythonpath = /data/realinsight/nginx/tengine/html/web2py/
@@ -38,6 +40,8 @@ reload-on-as = 256
 reload-on-rss = 192
 cron = 0 0 -1 -1 -1 /usr/local/python3.6/bin/python3 /data/realinsight/nginx/tengine/html/web2py/web2py.py -Q -S welcome -M -R scripts/sessions2trash.py -A -o
 no-orphans = true
-chmod-socket = 666```
+chmod-socket = 666
+```
+
 1. 启动uwsgi，执行命令：`uwsgi -d --ini /data/realinsight/nginx/tengine/conf/web2py.ini`,执行命令`ps aux|grep uwsgi`查看进程是否存在，如果存在则表示启动成功。
 2. 测试访问web2py是否部署成功，浏览器访问地址查看页面打开是否正常:`http://ip:port/task_monitor/`
